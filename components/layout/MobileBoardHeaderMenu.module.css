@@ -1,0 +1,150 @@
+.trigger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: rgba(255,255,255,0.015);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.221);
+  border: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px) saturate(1);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.triggerLine {
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.triggerOpen .triggerLine:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.triggerOpen .triggerLine:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.backdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panel {
+  display: none;
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  z-index: 59;
+  width: min(320px, calc(100vw - 2rem));
+  border-radius: 1.15rem;
+  padding: 1rem;
+  background: var(--bg-panel);
+  border: 1px solid rgba(213, 215, 207, 0.9);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.panelOpen {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.profile {
+  padding: 0.25rem 0.25rem 0.75rem;
+}
+
+.username {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.email {
+  margin: 0.2rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.menuItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 2.15rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  padding: 0.4rem 0.55rem;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.16s ease;
+}
+
+.menuItem:hover {
+  background: var(--bg-panel-strong);
+}
+
+.divider {
+  height: 1px;
+  margin: 0.65rem 0;
+  background: var(--line-mid);
+}
+
+@media (max-width: 768px) {
+  .trigger,
+  .backdrop,
+  .panel {
+    display: block;
+  }
+
+  .trigger {
+    display: inline-flex;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .panel {
+    top: 4rem;
+  }
+}

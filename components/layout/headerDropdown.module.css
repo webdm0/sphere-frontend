@@ -1,0 +1,86 @@
+.dropdown {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  background: var(--bg-input);
+  backdrop-filter: blur(5px);
+  border-radius: 0.6rem;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.menuOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdownHeader {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.username {
+  margin-bottom: 0.2rem;
+  max-width: 200px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  max-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.emailLocal {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emailDomain {
+  flex-shrink: 0;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: var(--bg-panel-strong);
+}

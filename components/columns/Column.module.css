@@ -1,0 +1,269 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cardsContainer {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
+}
+
+.cardsContainer::before,
+.cardsContainer::after {
+  content: "";
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cardsContainer::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.cardsContainer::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.cardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.columnOver {
+  outline: 2px dashed rgba(0,0,0,0.2);
+}
+
+.cardInput {
+  width: 100%;
+  background: var(--bg-input);
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 2.5rem 1rem 1rem;
+  box-shadow: var(--shadow-inset-soft);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.cardInputWrapper {
+  position: relative;
+}
+
+.cardInputAddBtn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%) rotate(0deg);
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.22s ease;
+}
+
+.cardInputWrapper:focus-within .cardInputAddBtn {
+  display: inline-flex;
+}
+
+.cardInputAddBtn:hover:not(:disabled) {
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(-50%) rotate(90deg) scale(1.03);
+}
+
+.cardInputAddBtn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.cardInput::placeholder {
+  color: var(--text-placeholder);
+}
+
+.cardInput:focus {
+  background: var(--bg-input-focus);
+  box-shadow: var(--shadow-inset-strong);
+  transform: scale(0.985);
+}
+
+.cardInput:hover {
+  background: var(--bg-input-hover);
+  filter: contrast(1.03);
+}
+
+.titleInput {
+  font-size: 1rem;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  border-bottom: 1px dashed transparent;
+  resize: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  font-family: inherit;
+  height: auto;
+}
+
+.titleInput::-webkit-scrollbar { display: none; }
+
+.titleEditing:focus { border-bottom-color: rgba(0, 0, 0, 0.4); }
+
+.titleInput:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.titleInput[data-pointer-focus]:focus-visible {
+  outline: none;
+}
+
+.titleReadonly { cursor: pointer; }
+
+.titleReadOnly { cursor: default; }
+
+.columnHeader {
+  padding: 1rem 1rem 0rem;
+}
+
+.columnHeaderDragHandle:focus-visible {
+  outline: 2px dashed var(--focus-ring);
+  border-radius: 20px;
+  outline-offset: -2px;
+}
+
+.columnBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 0.5rem;
+  padding: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.columnWrapper {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border-radius: 1.5rem;
+  min-width: 240px;
+  max-width: 240px;
+  min-height: 115px;
+  max-height: 100%;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.columnWrapperTouchPulse {
+  animation: columnWrapperTouchPulse 0.42s cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+.columnWrapper:hover {
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.07),
+    0 0 0 1px rgba(255, 255, 255, 0.10);
+}
+
+.columnWrapperReadOnly {
+  cursor: default;
+}
+
+.columnWrapperReadOnly:hover {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.columnPending {
+  opacity: 0.98;
+  cursor: default;
+  pointer-events: none;
+}
+
+.cardInputPending {
+  cursor: progress;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.columnPendingOverlay {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f2f2f2 0%, #ededed 20%, #e6e6e6 40%, #ededed 60%, #f2f2f2 80%, #f2f2f2 100%);
+  background-size: 200% 100%;
+  pointer-events: none;
+  animation: shimmerColumn 1.6s ease-in-out infinite;
+}
+
+@keyframes columnWrapperTouchPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(130, 130, 130, 0.18),
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+  70% {
+    box-shadow:
+      0 0 0 8px rgba(130, 130, 130, 0),
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(130, 130, 130, 0),
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+}
+
+@keyframes shimmerColumn {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .columnWrapperTouchPulse {
+    animation: none;
+  }
+}

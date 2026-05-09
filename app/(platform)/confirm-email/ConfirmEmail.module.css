@@ -1,0 +1,161 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  width: min(560px, 92vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.9rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2rem;
+  padding: 2.75rem 3rem;
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.35);
+  z-index: -1;
+}
+
+.accent {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.accentLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.2),
+    transparent
+  );
+}
+
+.accentDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.quietMark {
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.countLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+.countNumber {
+  font-size: 2.6rem;
+  letter-spacing: 0.08em;
+  animation: pop 0.2s ease;
+}
+
+.countUnit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ticks {
+  display: flex;
+  gap: 6px;
+  margin-top: 0.4rem;
+}
+
+.tick {
+  width: 18px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.tick[data-active="true"] {
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  transform: translateY(-1px);
+}
+
+.notice {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.4rem 0 0;
+}
+
+.errorText {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.4rem 0 0;
+}
+
+.enterButton {
+  min-width: 200px;
+  margin-top: 0.9rem;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0.4;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

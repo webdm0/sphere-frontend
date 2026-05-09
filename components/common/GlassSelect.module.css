@@ -1,0 +1,137 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(250,250,250,0.8));
+  box-shadow: var(--shadow-glass);
+  cursor: pointer;
+  font-size: 0.92rem;
+  transition: background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--focus-ring);
+}
+
+.trigger:hover,
+.trigger.active {
+  box-shadow:
+    inset 0 0 5px rgba(255, 255, 255, 0.5),
+    0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dropdown[data-state="open"] {
+  animation: dropdownIn 0.18s ease-out forwards;
+}
+
+.dropdown[data-state="closed"] {
+  animation: dropdownOut 0.12s ease-in forwards;
+  pointer-events: none;
+}
+
+.dropdown {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.option {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.option:hover {
+  background: var(--bg-panel-strong);
+}
+
+.option:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--focus-ring);
+  border-radius: 8px;
+}
+
+.optionReadOnly {
+  cursor: default;
+  pointer-events: none;
+}
+
+.optionReadOnly:hover {
+  background: transparent
+}
+
+.selected {
+  background: rgba(240, 240, 240, 0.8);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+}

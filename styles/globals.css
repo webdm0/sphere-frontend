@@ -1,0 +1,118 @@
+@import "tailwindcss" source(none);
+
+@source "../app";
+@source "../components";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  border-color: var(--color-gray-200, currentColor);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder);
+  opacity: 1;
+}
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+:root {
+  --text-strong: #333;
+  --text-primary: #555;
+  --text-secondary: #666;
+  --text-muted: #777;
+  --text-placeholder: #999;
+  --border-soft: #d5d7cf;
+  --border-subtle: rgba(30, 30, 30, 0.06);
+  --line-soft: rgba(0, 0, 0, 0.05);
+  --line-mid: rgba(0, 0, 0, 0.08);
+  --bg-panel: rgba(255, 255, 255, 0.5);
+  --bg-panel-strong: rgba(255, 255, 255, 0.6);
+  --bg-panel-active: rgba(255, 255, 255, 0.78);
+  --bg-input: rgba(255, 255, 255, 0.2);
+  --bg-input-hover: rgba(255, 255, 255, 0.22);
+  --bg-input-focus: rgba(255, 255, 255, 0.25);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  --shadow-glass: inset 0 0 6px rgba(255, 255, 255, 0.6), 0 6px 18px rgba(10, 10, 10, 0.06);
+  --shadow-inset-soft: inset 0 0 4px rgba(0, 0, 0, 0.04);
+  --shadow-inset-strong: inset 0 0 6px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --focus-ring: rgba(120, 120, 120, 0.5);
+  --selection-bg: rgba(120, 120, 120, 0.25);
+}
+
+:where(.focus-ring):focus-visible {
+  outline: 2px solid var(--focus-ring);
+}
+
+body {
+  background: radial-gradient(#f7f8f3, #dfe2da);
+  font-family: var(--font-space-mono), var(--font-jetbrains-mono), monospace;
+  font-size: 1rem;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+::selection {
+  background: var(--selection-bg);
+}
+
+::-moz-selection {
+  background: var(--selection-bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--line-soft);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+}
+
+h1 {
+  @apply text-2xl sm:text-3xl font-normal tracking-normal;
+}
+
+h2 {
+  @apply text-xl sm:text-2xl font-normal tracking-normal;
+}
+
+h3 {
+  @apply text-lg sm:text-xl font-normal tracking-normal;
+}
+
+h4 {
+  @apply text-base sm:text-lg font-normal tracking-normal;
+}
+
+p {
+  @apply text-base leading-relaxed;
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
